@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)file:///C:/Users/ridok/Downloads/app%20(1).html -->
+<html lang="ar" dir="rtl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#07090f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="مصاريفي">
+<meta name="mobile-web-app-capable" content="yes">
+<title>مصاريفي 💎</title>
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 100 100&#39;&gt;&lt;rect width=&#39;100&#39; height=&#39;100&#39; rx=&#39;20&#39; fill=&#39;%2307090f&#39;/&gt;&lt;text y=&#39;78&#39; x=&#39;50&#39; text-anchor=&#39;middle&#39; font-size=&#39;60&#39;&gt;%F0%9F%92%8E&lt;/text&gt;&lt;/svg&gt;">
+<link href="./index_files/css2" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#07090f;font-family:'Tajawal',sans-serif;direction:rtl;overflow:hidden;overscroll-behavior:none;-webkit-text-size-adjust:100%}
+#app{position:fixed;inset:0;display:flex;flex-direction:column;background:#07090f;color:#e2e8f0;padding-top:env(safe-area-inset-top)}
+.page{display:flex;flex-direction:column;height:100%}
+.scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px}
+.scroll::-webkit-scrollbar{display:none}
+.hbar{background:#0d1120;border-bottom:1px solid #1a2235;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+.card{background:#0d1120;border:1px solid #1a2235;border-radius:16px;padding:16px;margin-bottom:12px}
+.btn{border:none;border-radius:12px;color:#fff;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;cursor:pointer;padding:12px 18px}
+.inp{width:100%;background:#121828;border:1px solid #1a2235;border-radius:12px;padding:11px 14px;color:#e2e8f0;font-family:'Tajawal',sans-serif;font-size:14px;direction:rtl;margin-bottom:10px;outline:none}
+.row{display:flex;gap:10px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ticker{display:flex;gap:8px;overflow-x:auto;padding:5px 14px 7px;-webkit-overflow-scrolling:touch}
+.ticker::-webkit-scrollbar{display:none}
+.soft{color:#718096}
+.gold{color:#f0b429}
+.teal{color:#00c9a7}
+.red{color:#ff5f5f}
+.green{color:#3dd68c}
+.orange{color:#f97316}
+.purple{color:#9f7aea}
+.nav{background:#0d1120;border-top:1px solid #1a2235;display:flex;justify-content:space-around;padding:7px 0;padding-bottom:calc(7px + env(safe-area-inset-bottom));flex-shrink:0}
+.nav-btn{background:none;border:none;color:#718096;font-family:'Tajawal',sans-serif;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 8px;cursor:pointer;font-weight:400}
+.nav-btn.active{color:#00c9a7;font-weight:700}
+.nav-center{background:linear-gradient(135deg,#f0b429,#f97316);border-radius:13px;color:#000!important;font-weight:700!important;padding:7px 14px;margin-top:-16px;box-shadow:0 4px 16px #f0b42944}
+.bar{height:6px;background:#2d3748;border-radius:6px;overflow:hidden;margin-top:4px}
+.bar-fill{height:100%;border-radius:6px}
+.overlay{position:fixed;inset:0;background:#0009;z-index:100;display:flex;align-items:flex-end}
+.sheet{background:#0d1120;border-radius:20px 20px 0 0;padding:20px 16px;padding-bottom:calc(36px + env(safe-area-inset-bottom));width:100%;border:1px solid #1a2235;max-height:85vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.badge{border-radius:8px;padding:3px 10px;font-size:11px;font-weight:700}
+.anim{animation:up .25s ease}
+@keyframes up{from{transform:translateY(14px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+@keyframes prog{from{width:0}to{width:100%}}
+.pulse{animation:pulse 1s infinite}
+.beat{animation:beat 1s ease-in-out infinite}
+.splash{position:fixed;inset:0;background:#07090f;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999}
+.progress-bar{width:60px;height:4px;background:#2d3748;border-radius:4px;overflow:hidden;margin-top:32px}
+.progress-fill{height:100%;background:#00c9a7;border-radius:4px;animation:prog 1s ease forwards}
+.hidden{display:none!important}
+select{font-family:'Tajawal',sans-serif;direction:rtl;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23718096' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:left 12px center}
+.chat-bubble-user{background:#00c9a733;border:1px solid #00c9a744;border-radius:14px 4px 14px 14px;padding:10px 14px;max-width:82%;font-size:13px;line-height:1.7;align-self:flex-start}
+.chat-bubble-ai{background:#121828;border:1px solid #1a2235;border-radius:4px 14px 14px 14px;padding:10px 14px;max-width:82%;font-size:13px;line-height:1.7;align-self:flex-end}
+.chat-container{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px;-webkit-overflow-scrolling:touch}
+.chat-container::-webkit-scrollbar{display:none}
+.notch{width:40px;height:4px;background:#2d3748;border-radius:4px;margin:0 auto 18px}
+</style>
+</head>
+<body>
+
+<!-- Splash -->
+<div class="splash hidden" id="splash">
+  <div class="beat" style="font-size:72px;margin-bottom:20px">💎</div>
+  <div style="font-size:28px;font-weight:800;color:#f0b429">مصاريفي</div>
+  <div style="font-size:13px;color:#718096;margin-top:8px">تطبيقك المالي الذكي</div>
+  <div class="progress-bar"><div class="progress-fill"></div></div>
+</div>
+
+<div id="app" class=""><div class="page anim"><div class="hbar"><div><div class="soft" style="font-size: 11px;">أهلاً 👋</div><div class="gold" style="font-size: 18px; font-weight: 800;">💎 مصاريفي</div></div><div style="text-align: left;"><div class="soft" style="font-size: 10px;">الرصيد</div><div style="font-size: 20px; font-weight: 800; color: rgb(0, 201, 167);">٨٬٥٩٥ <span style="font-size: 11px;">ر.س</span></div></div></div><div style="background: rgb(18, 24, 40); border-bottom: 1px solid rgb(26, 34, 53); flex-shrink: 0;"><div style="font-size: 10px; color: rgb(240, 180, 41); padding: 3px 14px 0px; font-weight: 700;">📍 القريبة منك — اضغط لفتح الخريطة</div><div class="ticker"><div style="background: rgb(13, 17, 32); border: 1px solid rgb(26, 34, 53); border-radius: 10px; padding: 5px 10px; min-width: 105px; flex-shrink: 0; cursor: pointer;"><div style="font-size: 11px; font-weight: 700;">🛒 أسواق العثيم</div><div style="font-size: 10px; color: rgb(0, 201, 167); margin-top: 1px;">⭐4 · 🗺️</div></div><div style="background: rgb(13, 17, 32); border: 1px solid rgb(26, 34, 53); border-radius: 10px; padding: 5px 10px; min-width: 105px; flex-shrink: 0; cursor: pointer;"><div style="font-size: 11px; font-weight: 700;">🏪 أسواق قطاف نجد</div><div style="font-size: 10px; color: rgb(0, 201, 167); margin-top: 1px;">⭐4.2 · 🗺️</div></div><div style="background: rgb(13, 17, 32); border: 1px solid rgb(26, 34, 53); border-radius: 10px; padding: 5px 10px; min-width: 105px; flex-shrink: 0; cursor: pointer;"><div style="font-size: 11px; font-weight: 700;">🌸 زهرة الوادي</div><div style="font-size: 10px; color: rgb(0, 201, 167); margin-top: 1px;">⭐4.2 · 🗺️</div></div><div style="background: rgb(13, 17, 32); border: 1px solid rgb(26, 34, 53); border-radius: 10px; padding: 5px 10px; min-width: 105px; flex-shrink: 0; cursor: pointer;"><div style="font-size: 11px; font-weight: 700;">🏠 تمويناتالأسرة</div><div style="font-size: 10px; color: rgb(0, 201, 167); margin-top: 1px;">⭐4.3 · 🗺️</div></div><div style="background: rgb(13, 17, 32); border: 1px solid rgb(26, 34, 53); border-radius: 10px; padding: 5px 10px; min-width: 105px; flex-shrink: 0; cursor: pointer;"><div style="font-size: 11px; font-weight: 700;">🥷 نينجا</div><div style="font-size: 10px; color: rgb(0, 201, 167); margin-top: 1px;">⭐3.9 · 🗺️</div></div><div style="background: rgb(13, 17, 32); border: 1px solid rgb(26, 34, 53); border-radius: 10px; padding: 5px 10px; min-width: 105px; flex-shrink: 0; cursor: pointer;"><div style="font-size: 11px; font-weight: 700;">🛵 جاهز</div><div style="font-size: 10px; color: rgb(0, 201, 167); margin-top: 1px;">⭐4.5 · 🗺️</div></div><div style="background: rgb(13, 17, 32); border: 1px solid rgb(26, 34, 53); border-radius: 10px; padding: 5px 10px; min-width: 105px; flex-shrink: 0; cursor: pointer;"><div style="font-size: 11px; font-weight: 700;">🍔 هانقر ستيشن</div><div style="font-size: 10px; color: rgb(0, 201, 167); margin-top: 1px;">⭐3 · 🗺️</div></div><div style="background: rgb(13, 17, 32); border: 1px solid rgb(26, 34, 53); border-radius: 10px; padding: 5px 10px; min-width: 105px; flex-shrink: 0; cursor: pointer;"><div style="font-size: 11px; font-weight: 700;">🌯 شاورمر</div><div style="font-size: 10px; color: rgb(0, 201, 167); margin-top: 1px;">⭐4.1 · 🗺️</div></div></div></div><div class="scroll"><div style="background: linear-gradient(135deg, rgba(240, 180, 41, 0.133), rgba(249, 115, 22, 0.067)); border: 2px solid rgba(240, 180, 41, 0.333); border-radius: 18px; padding: 13px 16px; margin-bottom: 12px; cursor: pointer; display: flex; align-items: center; gap: 12px;"><div style="width: 46px; height: 46px; border-radius: 13px; background: rgba(240, 180, 41, 0.2); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;">📸</div><div style="flex: 1 1 0%;"><div class="gold" style="font-size: 14px; font-weight: 800;">صوّر فاتورتك الآن</div><div class="soft" style="font-size: 11px; margin-top: 2px;">ذكاء اصطناعي يحللها ويضيفها تلقائياً</div></div><div class="gold" style="font-size: 20px;">‹</div></div><div class="grid2" style="margin-bottom: 12px;"><div style="background: rgb(13, 17, 32); border: 1px solid rgb(26, 34, 53); border-radius: 16px; padding: 13px; cursor: pointer;"><div class="soft" style="font-size: 11px; margin-bottom: 5px;">📥 الدخل</div><div style="font-size: 21px; font-weight: 800; color: rgb(0, 201, 167); margin-bottom: 3px;">٩٬٧٠٠</div><div style="font-size: 10px; color: rgb(45, 55, 72); margin-bottom: 5px;">2 مصدر</div><div style="font-size: 10px; color: rgb(0, 201, 167); font-weight: 700;">اضغط للتفاصيل ›</div></div><div style="background: rgb(13, 17, 32); border: 1px solid rgb(26, 34, 53); border-radius: 16px; padding: 13px; cursor: pointer;"><div class="soft" style="font-size: 11px; margin-bottom: 5px;">📤 المصاريف</div><div style="font-size: 21px; font-weight: 800; color: rgb(255, 95, 95); margin-bottom: 3px;">١٬١٠٥</div><div style="font-size: 10px; color: rgb(45, 55, 72); margin-bottom: 5px;">5 معاملة</div><div style="font-size: 10px; color: rgb(0, 201, 167); font-weight: 700;">اضغط للتفاصيل ›</div></div><div style="background: rgb(13, 17, 32); border: 1px solid rgb(26, 34, 53); border-radius: 16px; padding: 13px; cursor: pointer;"><div class="soft" style="font-size: 11px; margin-bottom: 5px;">🔔 الالتزامات</div><div style="font-size: 21px; font-weight: 800; color: rgb(249, 115, 22); margin-bottom: 3px;">٣٬٦٠٠</div><div style="font-size: 10px; color: rgb(45, 55, 72); margin-bottom: 5px;">3 التزام</div><div style="font-size: 10px; color: rgb(0, 201, 167); font-weight: 700;">اضغط للتفاصيل ›</div></div><div style="background: rgb(13, 17, 32); border: 1px solid rgb(26, 34, 53); border-radius: 16px; padding: 13px; cursor: pointer;"><div class="soft" style="font-size: 11px; margin-bottom: 5px;">📊 التقارير</div><div style="font-size: 21px; font-weight: 800; color: rgb(240, 180, 41); margin-bottom: 3px;">89٪</div><div style="font-size: 10px; color: rgb(45, 55, 72); margin-bottom: 5px;">نسبة الادخار</div><div style="font-size: 10px; color: rgb(0, 201, 167); font-weight: 700;">اضغط للتفاصيل ›</div></div></div><div style="background: linear-gradient(135deg, rgba(159, 122, 234, 0.133), rgba(91, 138, 245, 0.067)); border: 1px solid rgba(159, 122, 234, 0.267); border-radius: 16px; padding: 12px 15px; margin-bottom: 12px; cursor: pointer; display: flex; align-items: center; gap: 10px;"><div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(159, 122, 234, 0.2); display: flex; align-items: center; justify-content: center; font-size: 19px; flex-shrink: 0;">🤖</div><div style="flex: 1 1 0%;"><div style="font-size: 13px; font-weight: 700; color: rgb(159, 122, 234);">المساعد المالي الذكي</div><div class="soft" style="font-size: 11px; margin-top: 1px;">اسأله عن مصاريفك أو نصائح التوفير</div></div><div style="font-size: 18px; color: rgb(159, 122, 234);">‹</div></div><div class="card" style="margin-bottom: 12px;"><div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;"><div style="font-size: 14px; font-weight: 800;">💳 آخر المعاملات</div><button style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; color: rgb(0, 201, 167); font-size: 12px; font-weight: 700; cursor: pointer; font-family: Tajawal, sans-serif;">الكل ›</button></div><div style="display: flex; align-items: center; gap: 10px; padding: 10px 0px; border-bottom: 1px solid rgb(26, 34, 53);"><div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255, 95, 95, 0.133); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">🛒</div><div style="flex: 1 1 0%;"><div style="font-size: 13px; font-weight: 600;">بقالة أسبوعية</div><div class="soft" style="font-size: 10px;">٢٢ أبريل · العثيم</div></div><div style="font-size: 13px; font-weight: 800; color: rgb(255, 95, 95);">-٢٥٠</div></div><div style="display: flex; align-items: center; gap: 10px; padding: 10px 0px; border-bottom: 1px solid rgb(26, 34, 53);"><div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255, 95, 95, 0.133); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">🚗</div><div style="flex: 1 1 0%;"><div style="font-size: 13px; font-weight: 600;">وقود</div><div class="soft" style="font-size: 10px;">٢١ أبريل</div></div><div style="font-size: 13px; font-weight: 800; color: rgb(255, 95, 95);">-١٢٠</div></div><div style="display: flex; align-items: center; gap: 10px; padding: 10px 0px; border-bottom: 1px solid rgb(26, 34, 53);"><div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255, 95, 95, 0.133); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">🏠</div><div style="flex: 1 1 0%;"><div style="font-size: 13px; font-weight: 600;">فاتورة كهرباء</div><div class="soft" style="font-size: 10px;">٢٠ أبريل</div></div><div style="font-size: 13px; font-weight: 800; color: rgb(255, 95, 95);">-٤٥٠</div></div><div style="display: flex; align-items: center; gap: 10px; padding: 10px 0px; border-bottom: 1px solid rgb(26, 34, 53);"><div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255, 95, 95, 0.133); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">🛒</div><div style="flex: 1 1 0%;"><div style="font-size: 13px; font-weight: 600;">وجبة</div><div class="soft" style="font-size: 10px;">١٩ أبريل · شاورمر</div></div><div style="font-size: 13px; font-weight: 800; color: rgb(255, 95, 95);">-٨٥</div></div></div><div style="display: flex; gap: 10px; margin-bottom: 14px;"><button class="btn" style="flex: 1 1 0%; padding: 13px; background: linear-gradient(135deg, rgb(255, 95, 95), rgb(249, 115, 22));">📤 مصروف</button><button class="btn" style="flex: 1 1 0%; padding: 13px; background: linear-gradient(135deg, rgb(0, 201, 167), rgb(91, 138, 245));">📥 دخل</button></div></div><div class="nav"><button class="nav-btn active"><span style="font-size: 18px;">🏠</span><span>الرئيسية</span></button><button class="nav-btn"><span style="font-size: 18px;">🔍</span><span>مقارنة</span></button><button class="nav-btn nav-center"><span style="font-size: 21px;">📸</span><span>تصوير</span></button><button class="nav-btn"><span style="font-size: 18px;">📊</span><span>تقارير</span></button><button class="nav-btn"><span style="font-size: 18px;">☰</span><span>المزيد</span></button></div></div></div>
+
+<script>
+// ══════════════════════════════════
+// البيانات
+// ══════════════════════════════════
+const NEARBY=[
+  {name:"أسواق العثيم",emoji:"🛒",rating:4.0,open:"٧:٣٠ص–١:٤٥ص",cat:"supermarket",place_id:"ChIJjRrBwaGa9RURe75kgNT9iHM"},
+  {name:"أسواق قطاف نجد",emoji:"🏪",rating:4.2,open:"٧ص–٣ص",cat:"supermarket",place_id:"ChIJgVfNP26R9RUROpIaaxYuLZ0"},
+  {name:"زهرة الوادي",emoji:"🌸",rating:4.2,open:"٧ص–٢ص",cat:"supermarket",place_id:"ChIJd_bMzAWa9RUR_sOH48l4MtE"},
+  {name:"تمويناتالأسرة",emoji:"🏠",rating:4.3,open:"٧ص–١١:٣٠م",cat:"supermarket",place_id:"ChIJobWjXlGF9RUR8Mu0vTO7jBU"},
+  {name:"نينجا",emoji:"🥷",rating:3.9,open:"٢٤ ساعة",cat:"delivery",appUrl:"https://www.ninja.sa"},
+  {name:"جاهز",emoji:"🛵",rating:4.5,open:"٢٤ ساعة",cat:"delivery",appUrl:"https://www.jahez.net"},
+  {name:"هانقر ستيشن",emoji:"🍔",rating:3.0,open:"٢٤ ساعة",cat:"restaurant",place_id:"ChIJYWZKXQCF9RURfIbKqefQ12s"},
+  {name:"شاورمر",emoji:"🌯",rating:4.1,open:"١٠ص–٢ص",cat:"restaurant",place_id:"ChIJp7h2dH-b9RURQRwXrSVosNI"},
+];
+const EXP_CATS=["مصاريف البيت","شخصية","ثانوية","طعام وتسوق","مواصلات","صحة","ترفيه","تعليم","أخرى"];
+const INC_SRCS=["راتب","حساب المواطن","الضمان الاجتماعي","مكافأة","جمعية","عمل حر","استثمار","أخرى"];
+const CAT_ICON={"مصاريف البيت":"🏠","شخصية":"👤","ثانوية":"📦","طعام وتسوق":"🛒","مواصلات":"🚗","صحة":"💊","ترفيه":"🎬","تعليم":"📚","راتب":"💼","حساب المواطن":"🆔","الضمان الاجتماعي":"🛡️","مكافأة":"🏆","جمعية":"🤝","عمل حر":"💻","استثمار":"📈","أخرى":"📌"};
+const QUICK=["أرز","زيت","سكر","دجاج","حليب","بيض","دقيق","شاي","معكرونة","صابون","مياه","خبز"];
+
+let txns=[
+  {id:1,amount:250,category:"طعام وتسوق",note:"بقالة أسبوعية",store:"العثيم",date:new Date(Date.now()-864e5).toISOString()},
+  {id:2,amount:120,category:"مواصلات",note:"وقود",store:"",date:new Date(Date.now()-864e5*2).toISOString()},
+  {id:3,amount:450,category:"مصاريف البيت",note:"فاتورة كهرباء",store:"",date:new Date(Date.now()-864e5*3).toISOString()},
+  {id:4,amount:85,category:"طعام وتسوق",note:"وجبة",store:"شاورمر",date:new Date(Date.now()-864e5*4).toISOString()},
+  {id:5,amount:200,category:"شخصية",note:"ملابس",store:"",date:new Date(Date.now()-864e5*5).toISOString()},
+];
+let incomes=[
+  {id:1,amount:8500,source:"راتب",note:"أبريل",date:new Date().toISOString()},
+  {id:2,amount:1200,source:"حساب المواطن",note:"",date:new Date(Date.now()-864e5*5).toISOString()},
+];
+const COMMITMENTS=[
+  {id:1,name:"إيجار السكن",amount:2500,dueDay:1,icon:"🏠"},
+  {id:2,name:"قرض بنكي",amount:800,dueDay:15,icon:"🏦"},
+  {id:3,name:"تأمين سيارة",amount:300,dueDay:20,icon:"🚗"},
+];
+const COUPONS=[
+  {id:1,code:"SAVE20",store:"العثيم",discount:"خصم ٢٠٪",expiry:"2026-05-01"},
+  {id:2,code:"NINJA10",store:"نينجا",discount:"خصم ١٠ ر.س",expiry:"2026-04-25"},
+];
+let chatMsgs=[{role:"ai",text:"مرحباً! 🤖 اسألني عن مصاريفك أو نصائح التوفير."}];
+let searchHistory=[];
+let currentPage=null;
+let currentTab="home";
+let scanFile=null;
+
+// ══════════════════════════════════
+// أدوات
+// ══════════════════════════════════
+const now=new Date();
+const fn=n=>Number(n||0).toLocaleString("ar-SA");
+const fd=d=>new Date(d).toLocaleDateString("ar-SA",{month:"short",day:"numeric"});
+
+function thisMonthTxns(){
+  return txns.filter(t=>{const d=new Date(t.date);return d.getMonth()===now.getMonth()&&d.getFullYear()===now.getFullYear();});
+}
+function totalExp(){return thisMonthTxns().reduce((s,t)=>s+t.amount,0);}
+function totalInc(){return incomes.filter(i=>{const d=new Date(i.date);return d.getMonth()===now.getMonth()&&d.getFullYear()===now.getFullYear();}).reduce((s,i)=>s+i.amount,0);}
+function balance(){return totalInc()-totalExp();}
+function totalCom(){return COMMITMENTS.reduce((s,c)=>s+c.amount,0);}
+function catExp(){
+  return EXP_CATS.map(cat=>({cat,amt:thisMonthTxns().filter(t=>t.category===cat).reduce((s,t)=>s+t.amount,0)})).filter(c=>c.amt>0).sort((a,b)=>b.amt-a.amt);
+}
+function goMaps(p){
+  try{if(p.appUrl){window.open(p.appUrl,"_blank");return;}window.open("https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(p.name)+"&query_place_id="+p.place_id,"_blank");}catch(e){}
+}
+
+// ══════════════════════════════════
+// API
+// ══════════════════════════════════
+async function aiCall(messages,system,maxTokens=500){
+  
+  
+  try{
+    const body={model:"claude-sonnet-4-20250514",max_tokens:maxTokens,messages};
+    if(system)body.system=system;
+    const res=await fetch("https://api.anthropic.com/v1/messages",{
+      method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(body),signal:ctrl.signal
+    });
+    
+    if(!res.ok){const e=await res.json().catch(()=>({}));throw new Error(e.error?.message||"خطأ "+res.status);}
+    const data=await res.json();
+    return data.content?.[0]?.text||"";
+  }catch(e){throw e;}
+}
+
+// ══════════════════════════════════
+// الرسم (Render)
+// ══════════════════════════════════
+const app=document.getElementById("app");
+
+function h(tag,attrs={},children=[]){
+  const el=document.createElement(tag);
+  for(const[k,v]of Object.entries(attrs)){
+    if(k==="onclick")el.addEventListener("click",v);
+    else if(k==="oninput")el.addEventListener("input",v);
+    else if(k==="onchange")el.addEventListener("change",v);
+    else if(k==="onkeydown")el.addEventListener("keydown",v);
+    else if(k==="class")el.className=v;
+    else if(k==="style")el.style.cssText=v;
+    else if(k==="html")el.innerHTML=v;
+    else el.setAttribute(k,v);
+  }
+  for(const c of children){
+    if(typeof c==="string")el.appendChild(document.createTextNode(c));
+    else if(c)el.appendChild(c);
+  }
+  return el;
+}
+
+function render(){
+  app.innerHTML="";
+  if(currentPage)renderPage();
+  else renderTabs();
+}
+
+// ── هيدر مشترك للصفحات
+function pageHeader(title,sub,back){
+  return h("div",{class:"hbar"},[
+    h("button",{class:"btn",style:"background:none;color:#00c9a7;font-size:22px;padding:0 4px",onclick:back},["‹"]),
+    h("div",{},[
+      h("div",{style:"font-size:16px;font-weight:800"},[title]),
+      sub?h("div",{class:"soft",style:"font-size:11px;margin-top:1px"},[sub]):null
+    ])
+  ]);
+}
+
+// ── شريط الأماكن
+function tickerBar(){
+  const wrap=h("div",{style:"background:#121828;border-bottom:1px solid #1a2235;flex-shrink:0"},[
+    h("div",{style:"font-size:10px;color:#f0b429;padding:3px 14px 0;font-weight:700"},["📍 القريبة منك — اضغط لفتح الخريطة"]),
+    h("div",{class:"ticker"},NEARBY.map(p=>{
+      const d=h("div",{style:"background:#0d1120;border:1px solid #1a2235;border-radius:10px;padding:5px 10px;min-width:105px;flex-shrink:0;cursor:pointer"},[
+        h("div",{style:"font-size:11px;font-weight:700"},[p.emoji+" "+p.name]),
+        h("div",{style:"font-size:10px;color:#00c9a7;margin-top:1px"},["⭐"+p.rating+" · 🗺️"])
+      ]);
+      d.addEventListener("click",()=>goMaps(p));
+      return d;
+    }))
+  ]);
+  return wrap;
+}
+
+// ══════════════════════════════════
+// صفحات التفاصيل
+// ══════════════════════════════════
+function renderPage(){
+  const pg=h("div",{class:"page anim"});
+  if(currentPage==="income") buildIncomePage(pg);
+  else if(currentPage==="expenses") buildExpensesPage(pg);
+  else if(currentPage==="commitments") buildCommitmentsPage(pg);
+  else if(currentPage==="reports") buildReportsPage(pg);
+  else if(currentPage==="scan") buildScanPage(pg);
+  else if(currentPage==="chat") buildChatPage(pg);
+  app.appendChild(pg);
+}
+
+function buildIncomePage(pg){
+  const ti=totalInc(),te=totalExp(),b=balance();
+  pg.appendChild(pageHeader("💰 مصادر الدخل","الإجمالي: "+fn(ti)+" ر.س",()=>{currentPage=null;render();}));
+  const scroll=h("div",{class:"scroll"});
+  // بطاقة الإجمالي
+  const srcCards=INC_SRCS.map(src=>{
+    const amt=incomes.filter(i=>i.source===src).reduce((s,i)=>s+i.amount,0);
+    if(!amt)return null;
+    return h("div",{style:"background:#0d1120;border:1px solid #1a2235;border-radius:10px;padding:7px 12px"},[
+      h("div",{style:"font-size:10px;color:#718096"},[(CAT_ICON[src]||"💰")+" "+src]),
+      h("div",{style:"font-size:15px;font-weight:800;color:#3dd68c"},[fn(amt)])
+    ]);
+  }).filter(Boolean);
+  scroll.appendChild(h("div",{style:"background:linear-gradient(135deg,#0a2418,#061a20);border:1px solid #00c9a733;border-radius:18px;padding:20px;margin-bottom:14px"},[
+    h("div",{class:"soft",style:"font-size:12px"},["إجمالي هذا الشهر"]),
+    h("div",{style:"font-size:34px;font-weight:800;color:#00c9a7;margin-top:4px"},[fn(ti)+" ",h("span",{style:"font-size:15px"},["ر.س"])]),
+    h("div",{style:"display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"},srcCards)
+  ]));
+  // القائمة
+  const list=h("div",{class:"card"});
+  list.appendChild(h("div",{style:"font-size:14px;font-weight:800;margin-bottom:12px"},["سجل الدخل"]));
+  incomes.forEach(i=>{
+    list.appendChild(h("div",{style:"display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #1a2235"},[
+      h("div",{style:"width:40px;height:40px;border-radius:12px;background:#00c9a722;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0"},[(CAT_ICON[i.source]||"💰")]),
+      h("div",{style:"flex:1"},[
+        h("div",{style:"font-size:13px;font-weight:600"},[i.source]),
+        h("div",{class:"soft",style:"font-size:11px"},[fd(i.date)+(i.note?" · "+i.note:"")])
+      ]),
+      h("div",{style:"font-size:15px;font-weight:800;color:#00c9a7"},["+"+fn(i.amount)])
+    ]));
+  });
+  scroll.appendChild(list);
+  const addBtn=h("button",{class:"btn",style:"width:100%;padding:14px;background:linear-gradient(135deg,#00c9a7,#5b8af5)"},["➕ إضافة دخل"]);
+  addBtn.addEventListener("click",()=>showAddSheet("income"));
+  scroll.appendChild(addBtn);
+  pg.appendChild(scroll);
+}
+
+function buildExpensesPage(pg){
+  const tm=thisMonthTxns(),te=totalExp();
+  pg.appendChild(pageHeader("📤 المصاريف","الإجمالي: "+fn(te)+" ر.س — "+tm.length+" معاملة",()=>{currentPage=null;render();}));
+  const scroll=h("div",{class:"scroll"});
+  // فئات
+  const catCard=h("div",{class:"card"});
+  catCard.appendChild(h("div",{style:"font-size:14px;font-weight:800;margin-bottom:14px"},["📂 حسب الفئة"]));
+  catExp().forEach(({cat,amt})=>{
+    const pct=Math.round((amt/te)*100);
+    catCard.appendChild(h("div",{style:"margin-bottom:11px"},[
+      h("div",{style:"display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"},[
+        h("span",{class:"soft"},[(CAT_ICON[cat]||"📌")+" "+cat]),
+        h("span",{style:"font-weight:700"},[fn(amt)+" ر.س · "+pct+"٪"])
+      ]),
+      h("div",{class:"bar"},[h("div",{class:"bar-fill",style:"width:"+pct+"%;background:linear-gradient(90deg,#5b8af5,#9f7aea)"},[])])
+    ]));
+  });
+  scroll.appendChild(catCard);
+  // كل المعاملات
+  const allCard=h("div",{class:"card"});
+  allCard.appendChild(h("div",{style:"font-size:14px;font-weight:800;margin-bottom:12px"},["كل المعاملات"]));
+  tm.forEach(t=>{
+    allCard.appendChild(h("div",{style:"display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #1a2235"},[
+      h("div",{style:"width:38px;height:38px;border-radius:11px;background:#ff5f5f22;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0"},[(CAT_ICON[t.category]||"💳")]),
+      h("div",{style:"flex:1"},[
+        h("div",{style:"font-size:13px;font-weight:600"},[t.note||t.category]),
+        h("div",{class:"soft",style:"font-size:11px"},[fd(t.date)+(t.store?" · "+t.store:"")])
+      ]),
+      h("div",{style:"font-size:14px;font-weight:800;color:#ff5f5f"},["-"+fn(t.amount)])
+    ]));
+  });
+  scroll.appendChild(allCard);
+  const addBtn=h("button",{class:"btn",style:"width:100%;padding:14px;background:linear-gradient(135deg,#ff5f5f,#f97316)"},["➕ إضافة مصروف"]);
+  addBtn.addEventListener("click",()=>showAddSheet("expense"));
+  scroll.appendChild(addBtn);
+  pg.appendChild(scroll);
+}
+
+function buildCommitmentsPage(pg){
+  const tc=totalCom(),ti=totalInc(),b=balance();
+  pg.appendChild(pageHeader("🔔 الالتزامات","الإجمالي: "+fn(tc)+" ر.س شهرياً",()=>{currentPage=null;render();}));
+  const scroll=h("div",{class:"scroll"});
+  COMMITMENTS.forEach(c=>{
+    const d=c.dueDay-now.getDate();
+    const urg=d<=3&&d>=0;
+    scroll.appendChild(h("div",{style:"background:"+(urg?"#f9731611":"#0d1120")+";border:1px solid "+(urg?"#f9731655":"#1a2235")+";border-radius:16px;padding:14px 16px;margin-bottom:10px"},[
+      h("div",{style:"display:flex;justify-content:space-between;align-items:center"},[
+        h("div",{style:"display:flex;align-items:center;gap:10px"},[
+          h("span",{style:"font-size:24px"},[c.icon]),
+          h("div",{},[
+            h("div",{style:"font-size:14px;font-weight:700"},[c.name]),
+            h("div",{class:"soft",style:"font-size:11px"},["يستحق يوم "+c.dueDay+(d>=0?" · بعد "+d+" يوم":"")])
+          ])
+        ]),
+        h("div",{style:"text-align:left"},[
+          h("div",{style:"font-size:18px;font-weight:800;color:"+(urg?"#f97316":"#e2e8f0")},[fn(c.amount)]),
+          h("div",{class:"soft",style:"font-size:10px"},["ر.س"])
+        ])
+      ])
+    ]));
+  });
+  const sumCard=h("div",{class:"card"});
+  const rows=[
+    ["إجمالي الالتزامات",fn(tc)+" ر.س","#f97316"],
+    ["الرصيد بعد الالتزامات",fn(b-tc)+" ر.س",b-tc>=0?"#3dd68c":"#ff5f5f"]
+  ];
+  rows.forEach(([l,v,c2])=>{
+    sumCard.appendChild(h("div",{style:"display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px"},[
+      h("span",{class:"soft"},[l]),h("span",{style:"font-weight:700;color:"+c2},[v])
+    ]));
+  });
+  const pct=Math.min(Math.round((tc/Math.max(ti,1))*100),100);
+  sumCard.appendChild(h("div",{class:"bar"},[h("div",{class:"bar-fill",style:"width:"+pct+"%;background:#f97316"},[])]));
+  sumCard.appendChild(h("div",{class:"soft",style:"font-size:11px;text-align:center;margin-top:6px"},[pct+"٪ من الدخل"]));
+  scroll.appendChild(sumCard);
+  pg.appendChild(scroll);
+}
+
+function buildReportsPage(pg){
+  const ti=totalInc(),te=totalExp(),b=balance(),avg=Math.round(te/Math.max(now.getDate(),1));
+  pg.appendChild(pageHeader("📊 التقارير",null,()=>{currentPage=null;render();}));
+  const scroll=h("div",{class:"scroll"});
+  // ملخص
+  const grid=h("div",{class:"grid2",style:"margin-bottom:14px"});
+  [{l:"الدخل",v:ti,c:"#00c9a7"},{l:"المصاريف",v:te,c:"#ff5f5f"},{l:"الرصيد",v:b,c:b>=0?"#3dd68c":"#ff5f5f"},{l:"متوسط يومي",v:avg,c:"#f0b429"}].forEach(s=>{
+    grid.appendChild(h("div",{class:"card",style:"padding:12px 14px;margin-bottom:0"},[
+      h("div",{class:"soft",style:"font-size:10px;margin-bottom:3px"},[s.l]),
+      h("div",{style:"font-size:18px;font-weight:800;color:"+s.c},[fn(s.v)]),
+      h("div",{style:"font-size:9px;color:#2d3748"},["ر.س"])
+    ]));
+  });
+  scroll.appendChild(grid);
+  // رسم ٧ أيام
+  const chartCard=h("div",{class:"card"});
+  chartCard.appendChild(h("div",{style:"font-size:14px;font-weight:800;margin-bottom:14px"},["📅 آخر ٧ أيام"]));
+  const chartRow=h("div",{style:"display:flex;align-items:flex-end;gap:5px;height:90px"});
+  const days=Array.from({length:7}).map((_,i)=>{const d=new Date();d.setDate(d.getDate()-6+i);return d;});
+  const amts=days.map(d=>txns.filter(t=>new Date(t.date).toDateString()===d.toDateString()).reduce((s,t)=>s+t.amount,0));
+  const maxA=Math.max(...amts,1);
+  days.forEach((d,i)=>{
+    const amt=amts[i];
+    const hh=Math.max((amt/maxA)*78,amt?5:2);
+    const col=h("div",{style:"flex:1;display:flex;flex-direction:column;align-items:center;gap:3px"});
+    if(amt>0)col.appendChild(h("div",{style:"font-size:9px;color:#718096"},[fn(amt)]));
+    col.appendChild(h("div",{style:"width:100%;height:"+hh+"px;background:"+(i===6?"#00c9a7":"#5b8af599")+";border-radius:5px"},[]));
+    col.appendChild(h("div",{style:"font-size:9px;color:#2d3748"},["أإثأخجس"[d.getDay()]]));
+    chartRow.appendChild(col);
+  });
+  chartCard.appendChild(chartRow);
+  scroll.appendChild(chartCard);
+  // فئات
+  const catCard=h("div",{class:"card"});
+  catCard.appendChild(h("div",{style:"font-size:14px;font-weight:800;margin-bottom:12px"},["📂 حسب الفئة"]));
+  catExp().forEach(({cat,amt})=>{
+    const pct=Math.round((amt/te)*100);
+    catCard.appendChild(h("div",{style:"margin-bottom:10px"},[
+      h("div",{style:"display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"},[
+        h("span",{class:"soft"},[(CAT_ICON[cat]||"📌")+" "+cat]),
+        h("span",{style:"font-weight:700"},[fn(amt)+" ر.س"])
+      ]),
+      h("div",{class:"bar"},[h("div",{class:"bar-fill",style:"width:"+pct+"%;background:#5b8af5"},[])])
+    ]));
+  });
+  scroll.appendChild(catCard);
+  // ادخار
+  const savPct=ti>0?Math.max(0,Math.round(((ti-te)/ti)*100)):0;
+  const savCard=h("div",{class:"card",style:"text-align:center"});
+  savCard.appendChild(h("div",{style:"font-size:14px;font-weight:800;margin-bottom:8px"},["💰 نسبة الادخار"]));
+  savCard.appendChild(h("div",{style:"font-size:42px;font-weight:800;color:#f0b429"},[savPct+"٪"]));
+  savCard.appendChild(h("div",{class:"bar",style:"margin:12px 0 8px"},[h("div",{class:"bar-fill",style:"width:"+savPct+"%;background:linear-gradient(90deg,#f0b429,#00c9a7)"},[])]));
+  savCard.appendChild(h("div",{class:"soft",style:"font-size:12px"},["وفّرت "+fn(Math.max(0,ti-te))+" ر.س هذا الشهر"]));
+  scroll.appendChild(savCard);
+  pg.appendChild(scroll);
+}
+
+function buildScanPage(pg){
+  pg.appendChild(pageHeader("📸 تصوير الفاتورة","الذكاء الاصطناعي يحلل فوراً",()=>{currentPage=null;scanFile=null;render();}));
+  const scroll=h("div",{class:"scroll"});
+  // منطقة التصوير
+  const scanCard=h("div",{class:"card",style:"text-align:center;padding:32px"});
+  const icon=h("div",{style:"font-size:54px;margin-bottom:14px"},["📄"]);
+  const desc=h("div",{class:"soft",style:"font-size:13px;line-height:1.8;margin-bottom:20px"},["صوّر فاتورتك وسيحللها\nالذكاء الاصطناعي فوراً"]);
+  const lbl1=document.createElement("label");
+  lbl1.style.cssText="display:inline-block;padding:13px 28px;background:linear-gradient(135deg,#f0b429,#f97316);border-radius:16px;color:#000;font-size:15px;font-weight:800;cursor:pointer;margin-bottom:12px;font-family:'Tajawal',sans-serif";
+  lbl1.textContent="📷 التقط صورة";
+  const inp1=document.createElement("input");
+  inp1.type="file";inp1.accept="image/*";inp1.setAttribute("capture","environment");inp1.style.display="none";
+  inp1.addEventListener("change",e=>{if(e.target.files[0])doScan(e.target.files[0],scroll,scanCard);});
+  lbl1.appendChild(inp1);
+  const br=document.createElement("br");
+  const lbl2=document.createElement("label");
+  lbl2.style.cssText="display:inline-block;padding:10px 20px;background:#121828;border:1px solid #1a2235;border-radius:12px;color:#718096;font-size:13px;cursor:pointer;font-family:'Tajawal',sans-serif;margin-top:8px";
+  lbl2.textContent="🖼️ اختر من المعرض";
+  const inp2=document.createElement("input");
+  inp2.type="file";inp2.accept="image/*";inp2.style.display="none";
+  inp2.addEventListener("change",e=>{if(e.target.files[0])doScan(e.target.files[0],scroll,scanCard);});
+  lbl2.appendChild(inp2);
+  scanCard.appendChild(icon);scanCard.appendChild(desc);scanCard.appendChild(lbl1);scanCard.appendChild(br);scanCard.appendChild(lbl2);
+  scroll.appendChild(scanCard);
+  // محلات مقترحة
+  const nearby=h("div",{class:"card"});
+  nearby.appendChild(h("div",{style:"font-size:13px;font-weight:700;margin-bottom:10px"},["🛒 تسوّق وصوّر من هنا"]));
+  NEARBY.filter(p=>p.cat==="supermarket").forEach(p=>{
+    const row=h("div",{style:"display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #1a2235;cursor:pointer"},[
+      h("span",{style:"font-size:20px"},[p.emoji]),
+      h("div",{style:"flex:1"},[h("div",{style:"font-size:13px;font-weight:600"},[p.name]),h("div",{class:"soft",style:"font-size:10px"},["⭐"+p.rating+" · "+p.open])]),
+      h("div",{style:"font-size:11px;color:#00c9a7;font-weight:700"},["🗺️"])
+    ]);
+    row.addEventListener("click",()=>goMaps(p));
+    nearby.appendChild(row);
+  });
+  scroll.appendChild(nearby);
+  pg.appendChild(scroll);
+}
+
+async function doScan(file,scroll,scanCard){
+  scanCard.innerHTML="";
+  const loading=h("div",{style:"text-align:center;padding:32px"},[
+    h("div",{class:"pulse",style:"font-size:36px"},["🔍"]),
+    h("div",{style:"font-size:14px;font-weight:700;color:#00c9a7;margin-top:10px"},["يتم تحليل الفاتورة..."]),
+    h("div",{class:"soft",style:"font-size:11px;margin-top:4px"},["قد يستغرق حتى ٣٠ ثانية"])
+  ]);
+  scanCard.appendChild(loading);
+  try{
+    const b64=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(",")[1]);r.onerror=rej;r.readAsDataURL(file);});
+    const prompt='حلّل هذه الفاتورة واستخرج: اسم المحل، التاريخ، المنتجات مع أسعارها، المجموع.\nأجب بـ JSON فقط:\n{"store":"","date":"","items":[{"name":"","price":0,"qty":1}],"total":0,"category":"طعام وتسوق","notes":""}';
+    const text=await aiCall([{role:"user",content:[{type:"image",source:{type:"base64",media_type:file.type,data:b64}},{type:"text",text:prompt}]}],null,700);
+    const result=JSON.parse(text.replace(/```json|```/g,"").trim());
+    scanCard.innerHTML="";
+    scanCard.style.border="1px solid #00c9a744";
+    scanCard.appendChild(h("div",{style:"font-size:14px;font-weight:800;color:#00c9a7;margin-bottom:12px"},["✅ "+(result.store||"تم التحليل")]));
+    result.items&&result.items.forEach(it=>{
+      scanCard.appendChild(h("div",{style:"display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px solid #1a2235"},[
+        h("span",{class:"soft"},[it.name+(it.qty>1?" ×"+it.qty:"")]),
+        h("span",{style:"font-weight:600"},[fn(it.price)+" ر.س"])
+      ]));
+    });
+    scanCard.appendChild(h("div",{style:"display:flex;justify-content:space-between;margin-top:12px;padding-top:10px;border-top:1px solid #00c9a744"},[
+      h("span",{style:"font-weight:800"},["المجموع"]),
+      h("span",{style:"font-weight:800;color:#f0b429;font-size:20px"},[fn(result.total)+" ر.س"])
+    ]));
+    if(result.notes)scanCard.appendChild(h("div",{class:"soft",style:"font-size:11px;margin-top:6px"},["📝 "+result.notes]));
+    const btns=h("div",{style:"display:flex;gap:10px;margin-top:14px"});
+    const retry=h("button",{class:"btn",style:"flex:1;padding:12px;font-size:13px;background:#2d3748"},["📷 مرة أخرى"]);
+    retry.addEventListener("click",()=>buildScanPage(pg=document.querySelector(".page")));
+    const save=h("button",{class:"btn",style:"flex:2;padding:12px;font-size:13px;background:linear-gradient(135deg,#00c9a7,#5b8af5)"},["✅ إضافة للمصاريف"]);
+    save.addEventListener("click",()=>{
+      txns.unshift({id:Date.now(),amount:result.total,category:result.category||"طعام وتسوق",note:result.store||"مسح فاتورة",store:result.store||"",date:new Date().toISOString()});
+      currentPage=null;render();
+    });
+    btns.appendChild(retry);btns.appendChild(save);
+    scanCard.appendChild(btns);
+  }catch(e){
+    scanCard.innerHTML="";
+    scanCard.style.border="1px solid #ff5f5f44";
+    scanCard.appendChild(h("div",{style:"text-align:center;padding:24px"},[
+      h("div",{style:"font-size:32px;margin-bottom:8px"},["❌"]),
+      h("div",{style:"font-size:13px;color:#ff5f5f;font-weight:700;margin-bottom:4px"},[e.message||"تعذّر التحليل"])
+    ]));
+    const retry=h("button",{class:"btn",style:"width:100%;margin-top:12px;padding:9px;background:#ff5f5f"},["حاول مرة أخرى"]);
+    retry.addEventListener("click",()=>{currentPage="scan";render();});
+    scanCard.appendChild(retry);
+  }
+}
+
+function buildChatPage(pg){
+  pg.style.cssText="display:flex;flex-direction:column;height:100%";
+  pg.appendChild(pageHeader("🤖 المساعد المالي","مدعوم بالذكاء الاصطناعي",()=>{currentPage=null;render();}));
+  const chatArea=h("div",{class:"chat-container"});
+  function renderMsgs(){
+    chatArea.innerHTML="";
+    chatMsgs.forEach(m=>{
+      const wrap=h("div",{style:"display:flex;justify-content:"+(m.role==="user"?"flex-start":"flex-end")});
+      const bubble=h("div",{class:m.role==="user"?"chat-bubble-user":"chat-bubble-ai"});
+      if(m.role==="ai")bubble.appendChild(h("div",{style:"font-size:10px;color:#00c9a7;font-weight:700;margin-bottom:3px"},["🤖 المساعد"]));
+      bubble.appendChild(document.createTextNode(m.text));
+      wrap.appendChild(bubble);
+      chatArea.appendChild(wrap);
+    });
+    chatArea.scrollTop=chatArea.scrollHeight;
+  }
+  renderMsgs();
+  pg.appendChild(chatArea);
+  // اقتراحات
+  const sugg=h("div",{style:"padding:6px 16px;display:flex;gap:6px;overflow-x:auto;flex-shrink:0"});
+  sugg.style.cssText="padding:6px 16px;display:flex;gap:6px;overflow-x:auto;flex-shrink:0;-webkit-overflow-scrolling:touch";
+  ["كم صرفت؟","أين أوفر؟","نصائح","حلل مصاريفي"].forEach(q=>{
+    const b=h("button",{style:"background:#121828;border:1px solid #1a2235;border-radius:10px;color:#718096;font-family:'Tajawal',sans-serif;font-size:11px;padding:6px 12px;cursor:pointer;flex-shrink:0;white-space:nowrap"},[q]);
+    b.addEventListener("click",()=>sendMsg(q,inp,renderMsgs));
+    sugg.appendChild(b);
+  });
+  pg.appendChild(sugg);
+  // الإدخال
+  const inp=h("input",{class:"inp",placeholder:"اسأل عن مصاريفك...",style:"margin-bottom:0;flex:1"});
+  const sendB=h("button",{class:"btn",style:"padding:12px 18px;background:linear-gradient(135deg,#00c9a7,#5b8af5);flex-shrink:0"},["إرسال"]);
+  sendB.addEventListener("click",()=>sendMsg(inp.value,inp,renderMsgs));
+  inp.addEventListener("keydown",e=>{if(e.key==="Enter")sendMsg(inp.value,inp,renderMsgs);});
+  const inputRow=h("div",{style:"padding:10px 16px;padding-bottom:calc(10px + env(safe-area-inset-bottom));background:#0d1120;border-top:1px solid #1a2235;display:flex;gap:8px;flex-shrink:0"});
+  inputRow.appendChild(inp);inputRow.appendChild(sendB);
+  pg.appendChild(inputRow);
+}
+
+async function sendMsg(msg,inp,renderMsgs){
+  const m=(msg||inp.value).trim();
+  if(!m)return;
+  inp.value="";
+  chatMsgs.push({role:"user",text:m});
+  renderMsgs();
+  const ti=totalInc(),te=totalExp(),b=balance(),tc=totalCom();
+  const topCats=catExp().slice(0,3).map(c=>c.cat+" ("+fn(c.amt)+" ر.س)").join("، ");
+  const sys="أنت مساعد مالي ذكي باللهجة السعودية. دخل="+fn(ti)+" ر.س، مصاريف="+fn(te)+" ر.س، رصيد="+fn(b)+" ر.س، التزامات="+fn(tc)+" ر.س، أكبر المصاريف: "+topCats+". أجب بإيجاز.";
+  const thinking=h("div",{style:"display:flex;justify-content:flex-end"});
+  const bubble=h("div",{class:"chat-bubble-ai pulse",style:"font-size:12px;color:#718096"},["⏳ يفكر..."]);
+  thinking.appendChild(bubble);
+  document.querySelector(".chat-container").appendChild(thinking);
+  document.querySelector(".chat-container").scrollTop=9999;
+  try{
+    const reply=await aiCall([{role:"user",content:m}],sys,350);
+    chatMsgs.push({role:"ai",text:reply});
+  }catch(e){chatMsgs.push({role:"ai",text:"⚠️ "+e.message});}
+  renderMsgs();
+}
+
+// ══════════════════════════════════
+// التابات
+// ══════════════════════════════════
+function renderTabs(){
+  const pg=h("div",{class:"page anim"});
+  const ti=totalInc(),te=totalExp(),b=balance();
+  // هيدر
+  const hdr=h("div",{class:"hbar"});
+  hdr.appendChild(h("div",{},[h("div",{class:"soft",style:"font-size:11px"},["أهلاً 👋"]),h("div",{class:"gold",style:"font-size:18px;font-weight:800"},["💎 مصاريفي"])]));
+  hdr.appendChild(h("div",{style:"text-align:left"},[h("div",{class:"soft",style:"font-size:10px"},["الرصيد"]),h("div",{style:"font-size:20px;font-weight:800;color:"+(b>=0?"#00c9a7":"#ff5f5f")},[fn(b)+" ",h("span",{style:"font-size:11px"},["ر.س"])])]));
+  pg.appendChild(hdr);
+  pg.appendChild(tickerBar());
+  // محتوى
+  const content=h("div",{class:"scroll"});
+  if(currentTab==="home") buildHomeTab(content,ti,te,b);
+  else if(currentTab==="search") buildSearchTab(content);
+  else if(currentTab==="stats") buildStatsTab(content,ti,te,b);
+  else if(currentTab==="more") buildMoreTab(content);
+  pg.appendChild(content);
+  // ناف
+  const nav=h("div",{class:"nav"});
+  [{id:"home",icon:"🏠",label:"الرئيسية"},{id:"search",icon:"🔍",label:"مقارنة"},{id:"scan_q",icon:"📸",label:"تصوير",center:true},{id:"stats",icon:"📊",label:"تقارير"},{id:"more",icon:"☰",label:"المزيد"}].forEach(t=>{
+    const btn=h("button",{class:"nav-btn"+(t.center?" nav-center":"")+(currentTab===t.id?" active":"")},[h("span",{style:"font-size:"+(t.center?21:18)+"px"},[t.icon]),h("span",{},[t.label])]);
+    btn.addEventListener("click",()=>{if(t.id==="scan_q"){currentPage="scan";render();}else{currentTab=t.id;render();}});
+    nav.appendChild(btn);
+  });
+  pg.appendChild(nav);
+  app.appendChild(pg);
+}
+
+function buildHomeTab(c,ti,te,b){
+  // تصوير بارز
+  const scanBanner=h("div",{style:"background:linear-gradient(135deg,#f0b42922,#f9731611);border:2px solid #f0b42955;border-radius:18px;padding:13px 16px;margin-bottom:12px;cursor:pointer;display:flex;align-items:center;gap:12px"},[
+    h("div",{style:"width:46px;height:46px;border-radius:13px;background:#f0b42933;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0"},["📸"]),
+    h("div",{style:"flex:1"},[h("div",{class:"gold",style:"font-size:14px;font-weight:800"},["صوّر فاتورتك الآن"]),h("div",{class:"soft",style:"font-size:11px;margin-top:2px"},["ذكاء اصطناعي يحللها ويضيفها تلقائياً"])]),
+    h("div",{class:"gold",style:"font-size:20px"},["‹"])
+  ]);
+  scanBanner.addEventListener("click",()=>{currentPage="scan";render();});
+  c.appendChild(scanBanner);
+  // الخانات
+  const grid=h("div",{class:"grid2",style:"margin-bottom:12px"});
+  [
+    {icon:"📥",label:"الدخل",value:fn(ti),sub:incomes.length+" مصدر",color:"#00c9a7",page:"income"},
+    {icon:"📤",label:"المصاريف",value:fn(te),sub:thisMonthTxns().length+" معاملة",color:"#ff5f5f",page:"expenses"},
+    {icon:"🔔",label:"الالتزامات",value:fn(totalCom()),sub:COMMITMENTS.length+" التزام",color:"#f97316",page:"commitments"},
+    {icon:"📊",label:"التقارير",value:(ti>0?Math.max(0,Math.round(((ti-te)/ti)*100)):0)+"٪",sub:"نسبة الادخار",color:"#f0b429",page:"reports"},
+  ].forEach(s=>{
+    const card=h("div",{style:"background:#0d1120;border:1px solid #1a2235;border-radius:16px;padding:13px;cursor:pointer"},[
+      h("div",{class:"soft",style:"font-size:11px;margin-bottom:5px"},[s.icon+" "+s.label]),
+      h("div",{style:"font-size:21px;font-weight:800;color:"+s.color+";margin-bottom:3px"},[s.value]),
+      h("div",{style:"font-size:10px;color:#2d3748;margin-bottom:5px"},[s.sub]),
+      h("div",{style:"font-size:10px;color:#00c9a7;font-weight:700"},["اضغط للتفاصيل ›"])
+    ]);
+    card.addEventListener("click",()=>{currentPage=s.page;render();});
+    grid.appendChild(card);
+  });
+  c.appendChild(grid);
+  // مساعد
+  const chatBtn=h("div",{style:"background:linear-gradient(135deg,#9f7aea22,#5b8af511);border:1px solid #9f7aea44;border-radius:16px;padding:12px 15px;margin-bottom:12px;cursor:pointer;display:flex;align-items:center;gap:10px"},[
+    h("div",{style:"width:40px;height:40px;border-radius:12px;background:#9f7aea33;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0"},["🤖"]),
+    h("div",{style:"flex:1"},[h("div",{style:"font-size:13px;font-weight:700;color:#9f7aea"},["المساعد المالي الذكي"]),h("div",{class:"soft",style:"font-size:11px;margin-top:1px"},["اسأله عن مصاريفك أو نصائح التوفير"])]),
+    h("div",{style:"font-size:18px;color:#9f7aea"},["‹"])
+  ]);
+  chatBtn.addEventListener("click",()=>{currentPage="chat";render();});
+  c.appendChild(chatBtn);
+  // آخر المعاملات
+  const txCard=h("div",{class:"card",style:"margin-bottom:12px"});
+  const txHeader=h("div",{style:"display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"},[
+    h("div",{style:"font-size:14px;font-weight:800"},["💳 آخر المعاملات"])
+  ]);
+  const allBtn=h("button",{style:"background:none;border:none;color:#00c9a7;font-size:12px;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif"},["الكل ›"]);
+  allBtn.addEventListener("click",()=>{currentPage="expenses";render();});
+  txHeader.appendChild(allBtn);
+  txCard.appendChild(txHeader);
+  txns.slice(0,4).forEach(t=>{
+    txCard.appendChild(h("div",{style:"display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #1a2235"},[
+      h("div",{style:"width:36px;height:36px;border-radius:10px;background:#ff5f5f22;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0"},[(CAT_ICON[t.category]||"💳")]),
+      h("div",{style:"flex:1"},[h("div",{style:"font-size:13px;font-weight:600"},[t.note||t.category]),h("div",{class:"soft",style:"font-size:10px"},[fd(t.date)+(t.store?" · "+t.store:"")])]),
+      h("div",{style:"font-size:13px;font-weight:800;color:#ff5f5f"},["-"+fn(t.amount)])
+    ]));
+  });
+  c.appendChild(txCard);
+  // أزرار إضافة
+  const addRow=h("div",{style:"display:flex;gap:10px;margin-bottom:14px"});
+  const expBtn=h("button",{class:"btn",style:"flex:1;padding:13px;background:linear-gradient(135deg,#ff5f5f,#f97316)"},["📤 مصروف"]);
+  expBtn.addEventListener("click",()=>showAddSheet("expense"));
+  const incBtn=h("button",{class:"btn",style:"flex:1;padding:13px;background:linear-gradient(135deg,#00c9a7,#5b8af5)"},["📥 دخل"]);
+  incBtn.addEventListener("click",()=>showAddSheet("income"));
+  addRow.appendChild(expBtn);addRow.appendChild(incBtn);
+  c.appendChild(addRow);
+}
+
+function buildSearchTab(c){
+  const searchCard=h("div",{class:"card"});
+  searchCard.appendChild(h("div",{class:"gold",style:"font-size:14px;font-weight:800;margin-bottom:12px"},["🔍 قارن الأسعار بين المحلات"]));
+  const searchRow=h("div",{style:"display:flex;gap:8px;margin-bottom:10px"});
+  const inp=h("input",{class:"inp",placeholder:"اكتب المنتج... مثل: أرز، دجاج",style:"margin-bottom:0;flex:1"});
+  const srchBtn=h("button",{class:"btn",style:"padding:11px 16px;background:linear-gradient(135deg,#00c9a7,#5b8af5);flex-shrink:0"},["بحث"]);
+  searchRow.appendChild(inp);searchRow.appendChild(srchBtn);
+  searchCard.appendChild(searchRow);
+  const quickRow=h("div",{style:"display:flex;flex-wrap:wrap;gap:6px"});
+  QUICK.forEach(w=>{
+    const b=h("button",{style:"background:#121828;border:1px solid #1a2235;border-radius:9px;padding:4px 11px;color:#e2e8f0;font-family:'Tajawal',sans-serif;font-size:12px;cursor:pointer"},[w]);
+    b.addEventListener("click",()=>{inp.value=w;doSearch(w,c,histArea,resultArea);});
+    quickRow.appendChild(b);
+  });
+  searchCard.appendChild(quickRow);
+  c.appendChild(searchCard);
+  const histArea=h("div",{});
+  c.appendChild(histArea);
+  const resultArea=h("div",{});
+  c.appendChild(resultArea);
+  srchBtn.addEventListener("click",()=>doSearch(inp.value,c,histArea,resultArea));
+  inp.addEventListener("keydown",e=>{if(e.key==="Enter")doSearch(inp.value,c,histArea,resultArea);});
+  renderSearchHistory(histArea,inp,c,resultArea);
+}
+
+function renderSearchHistory(histArea,inp,c,resultArea){
+  histArea.innerHTML="";
+  if(searchHistory.length===0)return;
+  const hCard=h("div",{class:"card"});
+  hCard.appendChild(h("div",{class:"soft",style:"font-size:12px;margin-bottom:8px"},["🕐 آخر البحث"]));
+  const row=h("div",{style:"display:flex;flex-wrap:wrap;gap:6px"});
+  searchHistory.forEach(q=>{
+    const b=h("button",{style:"background:#121828;border:1px solid #1a2235;border-radius:9px;padding:4px 11px;color:#00c9a7;font-family:'Tajawal',sans-serif;font-size:12px;cursor:pointer"},["🔍 "+q]);
+    b.addEventListener("click",()=>{inp.value=q;doSearch(q,c,histArea,resultArea);});
+    row.appendChild(b);
+  });
+  hCard.appendChild(row);
+  histArea.appendChild(hCard);
+}
+
+async function doSearch(term,c,histArea,resultArea){
+  const t=term.trim();if(!t)return;
+  searchHistory=[t,...searchHistory.filter(x=>x!==t)].slice(0,8);
+  histArea.innerHTML="";
+  resultArea.innerHTML="";
+  const loading=h("div",{class:"card",style:"text-align:center;padding:28px"},[
+    h("div",{class:"pulse",style:"font-size:36px;margin-bottom:8px"},["🔍"]),
+    h("div",{class:"soft",style:"font-size:13px"},["يقارن الأسعار..."])
+  ]);
+  resultArea.appendChild(loading);
+  try{
+    const stores=NEARBY.map(p=>p.name+"("+p.cat+")").join("، ");
+    const prompt="أنت خبير بأسعار السوبرماركتات السعودية في وادي الدواسر.\nالمنتج: \""+t+"\"\nالمحلات: "+stores+"\nأجب بـ JSON فقط:\n{\"product\":\"\",\"unit\":\"\",\"results\":[{\"store\":\"\",\"emoji\":\"\",\"price\":0.00,\"note\":\"\",\"available\":true}],\"tip\":\"\",\"bestDeal\":\"\"}";
+    const text=await aiCall([{role:"user",content:prompt}],null,500);
+    const parsed=JSON.parse(text.replace(/```json|```/g,"").trim());
+    parsed.results=(parsed.results||[]).map(r=>({...r,placeRef:NEARBY.find(p=>p.name.includes(r.store)||r.store.includes(p.name))}));
+    resultArea.innerHTML="";
+    const sorted=[...parsed.results].sort((a,b)=>(a.available?a.price:9999)-(b.available?b.price:9999));
+    const minP=Math.min(...sorted.filter(r=>r.available).map(r=>r.price));
+    const maxP=Math.max(...sorted.filter(r=>r.available).map(r=>r.price));
+    // بطاقة الملخص
+    const sumCard=h("div",{style:"background:linear-gradient(135deg,#141830,#0a1020);border:1px solid #00c9a744;border-radius:16px;padding:16px;margin-bottom:12px"});
+    sumCard.appendChild(h("div",{style:"font-size:18px;font-weight:800"},[parsed.product+" ",h("span",{class:"soft",style:"font-size:12px;font-weight:400"},["("+parsed.unit+")"])]));
+    if(maxP>minP){
+      const saving=h("div",{style:"background:#3dd68c22;border:1px solid #3dd68c44;border-radius:10px;padding:9px 12px;margin-top:10px;display:flex;gap:8px;align-items:center"},[
+        h("span",{},[" 💰"]),
+        h("div",{},[h("div",{style:"font-size:12px;font-weight:700;color:#3dd68c"},["توفير "+(maxP-minP).toFixed(2)+" ر.س"]),h("div",{class:"soft",style:"font-size:10px"},["بين أرخص وأغلى محل"])])
+      ]);
+      sumCard.appendChild(saving);
+    }
+    resultArea.appendChild(sumCard);
+    const cmpCard=h("div",{class:"card",style:"margin-bottom:12px"});
+    cmpCard.appendChild(h("div",{style:"font-size:13px;font-weight:800;margin-bottom:12px"},["🏪 المقارنة"]));
+    sorted.forEach(r=>{
+      const best=r.available&&r.price===minP;
+      const worst=r.available&&r.price===maxP&&maxP!==minP;
+      const row=h("div",{style:"background:"+(best?"#3dd68c12":"#121828")+";border:1px solid "+(best?"#3dd68c55":"#1a2235")+";border-radius:13px;padding:12px 13px;margin-bottom:9px;position:relative;cursor:"+(r.placeRef?"pointer":"default")});
+      if(best)row.appendChild(h("div",{style:"position:absolute;top:8px;left:8px;background:#3dd68c;color:#fff;font-size:9px;font-weight:800;padding:2px 7px;border-radius:5px"},["⭐ الأوفر"]));
+      const rrow=h("div",{style:"display:flex;align-items:center;gap:8px;margin-bottom:6px"},[
+        h("span",{style:"font-size:20px"},[r.emoji]),
+        h("div",{style:"flex:1"},[h("div",{style:"font-size:13px;font-weight:700"},[r.store]),h("div",{class:"soft",style:"font-size:10px"},[r.note])]),
+        h("div",{style:"text-align:left"},[
+          r.available?h("div",{style:"font-size:17px;font-weight:800;color:"+(best?"#3dd68c":worst?"#ff5f5f":"#e2e8f0")},[r.price.toFixed(2)]):h("div",{style:"font-size:11px;color:#2d3748"},["غير متوفر"]),
+          r.available?h("div",{class:"soft",style:"font-size:9px"},["ر.س"]):null
+        ])
+      ]);
+      row.appendChild(rrow);
+      if(r.available){
+        row.appendChild(h("div",{class:"bar"},[h("div",{class:"bar-fill",style:"width:"+(maxP>0?(r.price/maxP)*100:0)+"%;background:"+(best?"#3dd68c":worst?"#ff5f5f":"#5b8af5")},[])]));
+      }
+      if(r.placeRef)row.appendChild(h("div",{style:"font-size:9px;color:#00c9a7;margin-top:4px;font-weight:700"},["اضغط لفتح "+(r.placeRef.cat==="delivery"?"التطبيق":"الخريطة")+" ›"]));
+      if(r.placeRef)row.addEventListener("click",()=>goMaps(r.placeRef));
+      cmpCard.appendChild(row);
+    });
+    resultArea.appendChild(cmpCard);
+    if(parsed.tip){
+      resultArea.appendChild(h("div",{style:"background:#f0b42915;border:1px solid #f0b42944;border-radius:13px;padding:11px 14px;margin-bottom:12px;display:flex;gap:8px"},[
+        h("span",{},[" 💡"]),h("div",{},[h("div",{class:"gold",style:"font-size:11px;font-weight:700;margin-bottom:2px"},["نصيحة"]),h("div",{style:"font-size:12px;line-height:1.6"},[parsed.tip])])
+      ]));
+    }
+    const newSrch=h("button",{style:"width:100%;padding:12px;background:#121828;border:1px solid #1a2235;border-radius:12px;color:#718096;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:14px"},["🔄 بحث جديد"]);
+    newSrch.addEventListener("click",()=>{currentTab="search";render();});
+    resultArea.appendChild(newSrch);
+  }catch(e){
+    resultArea.innerHTML="";
+    resultArea.appendChild(h("div",{style:"background:#0d1120;border:1px solid #ff5f5f44;border-radius:14px;padding:16px;text-align:center;color:#ff5f5f;font-size:13px"},["❌ "+e.message]));
+  }
+}
+
+function buildStatsTab(c,ti,te,b){
+  const avg=Math.round(te/Math.max(now.getDate(),1));
+  const grid=h("div",{class:"grid2",style:"margin-bottom:12px"});
+  [{l:"الدخل",v:ti,col:"#00c9a7"},{l:"المصاريف",v:te,col:"#ff5f5f"},{l:"الرصيد",v:b,col:b>=0?"#3dd68c":"#ff5f5f"},{l:"متوسط يومي",v:avg,col:"#f0b429"}].forEach(s=>{
+    grid.appendChild(h("div",{class:"card",style:"padding:13px 14px;margin-bottom:0"},[
+      h("div",{class:"soft",style:"font-size:11px;margin-bottom:4px"},[s.l]),
+      h("div",{style:"font-size:20px;font-weight:800;color:"+s.col},[fn(s.v)]),
+      h("div",{style:"font-size:9px;color:#2d3748"},["ر.س"])
+    ]));
+  });
+  c.appendChild(grid);
+  const fullBtn=h("button",{class:"btn",style:"width:100%;padding:14px;margin-bottom:12px;background:linear-gradient(135deg,#5b8af5,#9f7aea)"},["📊 التقارير الكاملة ›"]);
+  fullBtn.addEventListener("click",()=>{currentPage="reports";render();});
+  c.appendChild(fullBtn);
+  const catCard=h("div",{class:"card"});
+  catCard.appendChild(h("div",{style:"font-size:14px;font-weight:800;margin-bottom:12px"},["📂 أبرز المصاريف"]));
+  catExp().slice(0,4).forEach(({cat,amt})=>{
+    const pct=Math.round((amt/te)*100)||0;
+    catCard.appendChild(h("div",{style:"margin-bottom:10px"},[
+      h("div",{style:"display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"},[h("span",{class:"soft"},[(CAT_ICON[cat]||"📌")+" "+cat]),h("span",{style:"font-weight:700"},[fn(amt)+" ر.س"])]),
+      h("div",{class:"bar"},[h("div",{class:"bar-fill",style:"width:"+pct+"%;background:#5b8af5"},[])])
+    ]));
+  });
+  c.appendChild(catCard);
+}
+
+function buildMoreTab(c){
+  const cCard=h("div",{class:"card",style:"margin-bottom:12px"});
+  cCard.appendChild(h("div",{style:"font-size:14px;font-weight:800;margin-bottom:12px"},["🎟️ الكوبونات"]));
+  COUPONS.forEach(cp=>{
+    const exp=new Date(cp.expiry)<new Date();
+    const soon=!exp&&(new Date(cp.expiry)-new Date())/864e5<=7;
+    cCard.appendChild(h("div",{style:"background:#121828;border:1px solid "+(soon?"#f9731666":"#1a2235")+";border-radius:12px;padding:11px 14px;margin-bottom:8px"},[
+      h("div",{style:"display:flex;justify-content:space-between;align-items:center"},[
+        h("div",{},[h("div",{class:"gold",style:"font-size:15px;font-weight:800"},[cp.code]),h("div",{class:"soft",style:"font-size:11px;margin-top:2px"},[cp.store+" · "+cp.discount])]),
+        h("div",{class:"badge",style:"background:"+(exp?"#ff5f5f22":soon?"#f9731622":"#3dd68c22")+";color:"+(exp?"#ff5f5f":soon?"#f97316":"#3dd68c")},[(exp?"منتهي":soon?"ينتهي قريباً":fd(cp.expiry))])
+      ])
+    ]));
+  });
+  c.appendChild(cCard);
+  const sadaqah=h("div",{style:"background:linear-gradient(135deg,#3dd68c15,#00c9a710);border:1px solid #3dd68c33;border-radius:16px;padding:16px"});
+  sadaqah.appendChild(h("div",{style:"font-size:14px;font-weight:800;margin-bottom:6px"},["🌙 الصدقة — منصة إحسان"]));
+  sadaqah.appendChild(h("div",{class:"soft",style:"font-size:12px;margin-bottom:12px;line-height:1.7"},["تبرع عبر المنصة الوطنية الموثوقة"]));
+  const sBtn=h("button",{class:"btn",style:"width:100%;padding:13px;background:#3dd68c"},["🔗 فتح منصة إحسان"]);
+  sBtn.addEventListener("click",()=>window.open("https://www.ihsan.org.sa","_blank"));
+  sadaqah.appendChild(sBtn);
+  c.appendChild(sadaqah);
+}
+
+// ══════════════════════════════════
+// نموذج الإضافة
+// ══════════════════════════════════
+function showAddSheet(type){
+  const isExp=type==="expense";
+  const overlay=h("div",{class:"overlay"});
+  const sheet=h("div",{class:"sheet"});
+  sheet.appendChild(h("div",{class:"notch"}));
+  sheet.appendChild(h("div",{style:"font-size:16px;font-weight:800;text-align:center;margin-bottom:18px;color:"+(isExp?"#ff5f5f":"#00c9a7")},[(isExp?"📤 إضافة مصروف":"📥 إضافة دخل")]));
+  const amtInp=h("input",{class:"inp",placeholder:"المبلغ (ر.س)",type:"number"});
+  const cats=isExp?EXP_CATS:INC_SRCS;
+  const catSel=document.createElement("select");
+  catSel.className="inp";
+  cats.forEach(cat=>{const o=document.createElement("option");o.value=cat;o.textContent=cat;catSel.appendChild(o);});
+  const noteInp=h("input",{class:"inp",placeholder:"ملاحظة (اختياري)"});
+  const storeInp=h("input",{class:"inp",placeholder:"المحل (اختياري)"});
+  sheet.appendChild(amtInp);sheet.appendChild(catSel);sheet.appendChild(noteInp);
+  if(isExp){
+    sheet.appendChild(storeInp);
+    const storeLabel=h("div",{class:"soft",style:"font-size:11px;margin-bottom:7px"},["اشتريت من:"]);
+    const storeRow=h("div",{style:"display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px"});
+    NEARBY.filter(p=>p.cat!=="delivery").forEach(p=>{
+      const b=h("button",{style:"background:#121828;border:1px solid #1a2235;border-radius:10px;padding:5px 10px;color:#718096;font-family:'Tajawal',sans-serif;font-size:11px;cursor:pointer"},[p.emoji+" "+p.name]);
+      b.addEventListener("click",()=>{storeInp.value=p.name;storeRow.querySelectorAll("button").forEach(x=>x.style.color="#718096");b.style.color="#00c9a7";b.style.borderColor="#00c9a766";});
+      storeRow.appendChild(b);
+    });
+    sheet.appendChild(storeLabel);sheet.appendChild(storeRow);
+  }
+  const btnRow=h("div",{style:"display:flex;gap:10px"});
+  const cancel=h("button",{class:"btn",style:"flex:1;padding:13px;background:#2d3748"},["إلغاء"]);
+  cancel.addEventListener("click",()=>overlay.remove());
+  const save=h("button",{class:"btn",style:"flex:2;padding:13px;background:"+(isExp?"linear-gradient(135deg,#ff5f5f,#f97316)":"linear-gradient(135deg,#00c9a7,#5b8af5)")},["حفظ ✓"]);
+  save.addEventListener("click",()=>{
+    const amt=Number(amtInp.value);
+    if(!amt||amt<=0)return;
+    if(isExp)txns.unshift({id:Date.now(),amount:amt,category:catSel.value,note:noteInp.value,store:storeInp.value,date:new Date().toISOString()});
+    else incomes.unshift({id:Date.now(),amount:amt,source:catSel.value,note:noteInp.value,date:new Date().toISOString()});
+    overlay.remove();render();
+  });
+  btnRow.appendChild(cancel);btnRow.appendChild(save);
+  sheet.appendChild(btnRow);
+  overlay.appendChild(sheet);
+  overlay.addEventListener("click",e=>{if(e.target===overlay)overlay.remove();});
+  document.body.appendChild(overlay);
+}
+
+// ══════════════════════════════════
+// تشغيل
+// ══════════════════════════════════
+window.addEventListener("load",()=>{
+  setTimeout(()=>{
+    document.getElementById("splash").classList.add("hidden");
+    app.classList.remove("hidden");
+    render();
+  },1000);
+});
+</script>
+
+
+</body></html>
